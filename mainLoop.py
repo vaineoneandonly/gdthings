@@ -13,7 +13,7 @@ def agnosticMain(): #Absolute trash, but some valuable lessons learned.
 
     #print(myClass)
 
-def currentMain(): #as non-generic as humanly possible. terrible, even.
+def firstMain(): #as non-generic as humanly possible. terrible, even.
     myClass = inputType.myWeapon.whiplance
     myInput = inputType.inputType.light
 
@@ -36,10 +36,8 @@ def classifiedClassesMain():
     myClassInput = int(input("0 for gunfists, 1 for whiplance: "))
 
     match myClassInput:
-        case 0:
-            player = gunfists.gunfistsClass()
-        case 1:
-            player = whiplance.whiplanceClass()
+        case 0: player = gunfists.gunfistsClass()
+        case 1: player = whiplance.whiplanceClass()
 
     while True:
         print("------------")
@@ -54,5 +52,6 @@ def classifiedClassesMain():
         player.processState(i)
 
 if __name__ == "__main__":
+    #firstMain()
     #agnosticMain()
     classifiedClassesMain()   

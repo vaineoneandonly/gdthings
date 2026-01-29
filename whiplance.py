@@ -46,7 +46,7 @@ whiplanceTransitionTable = [
     [whiplanceComboState.lanceNeutral,  whiplanceComboState.lanceNeutral,   whiplanceComboState.morphToWhip],   #backswing
     [whiplanceComboState.whipNeutral,   whiplanceComboState.whipNeutral,    whiplanceComboState.morphToLance],  #constrict
     [whiplanceComboState.lanceNeutral,  whiplanceComboState.lanceNeutral,   whiplanceComboState.lanceNeutral],  #whipCarousel
-    [whiplanceComboState.lanceNeutral,  whiplanceComboState.lanceNeutral,   whiplanceComboState.lanceNeutral],  #lanceTornado
+    [whiplanceComboState.lanceNeutral,  whiplanceComboState.lanceNeutral,   whiplanceComboState.lanceNeutral]   #lanceTornado
 ]
 
 whipEmpowered = False

@@ -11,6 +11,7 @@ class gunfistsComboState(inputType.Enum):
     straight = 7 #lunges the character forward, consuming three bullets.
     tripleAce = 8 #adds 3 pistol bursts to an attack, consuming three bullets.
     straightFlush = 9 #discharges the barrell, consuming all six bullets.
+    bulletWhiff = 10  #still on the fence about this. Maybe tossing all to neutral is better. let's see
 
 gunfistsTransitionTable =   [       
             #light                          heavy                           super
@@ -23,7 +24,8 @@ gunfistsTransitionTable =   [
     [gunfistsComboState.jab1,    gunfistsComboState.neutral,   gunfistsComboState.straightFlush], #downslam
     [gunfistsComboState.neutral, gunfistsComboState.neutral,   gunfistsComboState.neutral],       #straight
     [gunfistsComboState.jab2,    gunfistsComboState.uppercut,  gunfistsComboState.neutral],       #tripleAce
-    [gunfistsComboState.neutral, gunfistsComboState.neutral,   gunfistsComboState.neutral]        #straightFlush
+    [gunfistsComboState.neutral, gunfistsComboState.neutral,   gunfistsComboState.neutral],       #straightFlush
+    [gunfistsComboState.neutral, gunfistsComboState.neutral,   gunfistsComboState.neutral]        #bulletWhiff
 ]
 
 bullets = 0
@@ -95,6 +97,7 @@ class gunfistsClass(inputType.baseWeaponClass):
             case gunfistsComboState.reload:
                 if (self.bullets >= self.maxBulletCount):
                     print("locked and loaded. But a turn wasted.")
+                    self.comboState = gunfistsComboState.bulletWhiff
                 else:
                     print("reloading...")
                     self.bullets += self.bulletReloadCount
@@ -105,6 +108,7 @@ class gunfistsClass(inputType.baseWeaponClass):
             case gunfistsComboState.tripleAce:
                 if (self.bullets < self.tripleAceCount):
                     print("a whiff is a whiff.")
+                    self.comboState = gunfistsComboState.bulletWhiff
                 else:
                     print("bang, bang, bang, cowboy.")
                     self.bullets -= self.tripleAceCount
@@ -112,6 +116,7 @@ class gunfistsClass(inputType.baseWeaponClass):
             case gunfistsComboState.straight:
                 if (self.bullets < self.straightCount):
                     print("whomp whomp.")
+                    self.comboState = gunfistsComboState.bulletWhiff
                 else:
                     print("fwoosh.")
                     self.bullets -= self.straightCount
@@ -119,6 +124,7 @@ class gunfistsClass(inputType.baseWeaponClass):
             case gunfistsComboState.straightFlush:
                 if (self.bullets < self.straightFlushCount):
                     print("big heckling whomp.")
+                    self.comboState = gunfistsComboState.bulletWhiff
                 else:
                     print("fwoosh, with a lotta damage.")
                     self.bullets -= self.straightFlushCount
