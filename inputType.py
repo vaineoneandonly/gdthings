@@ -17,7 +17,11 @@ class baseWeaponClass():
         self.comboState = self.transitionTable[self.comboState.value][i.value]
 
     def showPossibleStates(self):
+        v = 0
         for state in self.transitionTable[self.comboState.value]:
             if state.name != "whipNeutral" and state.name != "lanceNeutral" and state.name != "neutral":
-                print(f"{state.name}")
-    
+                print(f"{state.name} - ", end = "")
+                print("light" if v == 0 else "heavy" if v == 1 else "super")
+                
+            v += 1
+

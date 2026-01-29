@@ -42,13 +42,17 @@ def classifiedClassesMain():
             player = whiplance.whiplanceClass()
 
     while True:
+        print("------------")
         player.showCurrentState()
+        print()
+
         player.showPossibleStates()
-        
+        print()
+
         i = inputType.inputType(int(input("0 for light, 1 for heavy, 2 for super: ")))
 
         player.processState(i)
 
 if __name__ == "__main__":
     #agnosticMain()
-    classifiedClassesMain()    
+    classifiedClassesMain()   
