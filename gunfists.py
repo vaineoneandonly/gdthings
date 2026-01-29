@@ -69,3 +69,58 @@ def gunfistsProcessState(state):
             else:
                 print("fwoosh, with a lotta damage.")
                 bullets -= straightFlushCount
+
+hue = "askldhaslui"
+
+class gunfistsClass(inputType.baseWeaponClass):
+    def __init__(self):
+        self.comboState = gunfistsComboState.neutral
+        self.transitionTable = gunfistsTransitionTable
+
+        self.bullets = 0
+        self.bulletReloadCount = 3
+        self.maxBulletCount = 6
+        self.tripleAceCount = 3
+        self.straightCount = 2
+        self.straightFlushCount = 6
+
+    def showCurrentState(self):
+        super().showCurrentState()
+        print(f"with {self.bullets} bullets.")
+
+    def processState(self, i):
+        super().processState(i)
+
+        match self.comboState:
+            case gunfistsComboState.reload:
+                if (self.bullets >= self.maxBulletCount):
+                    print("locked and loaded. But a turn wasted.")
+                else:
+                    print("reloading...")
+                    self.bullets += self.bulletReloadCount
+
+                    if (self.bullets > self.maxBulletCount): 
+                        self.bullets = self.maxBulletCount
+
+            case gunfistsComboState.tripleAce:
+                if (self.bullets < self.tripleAceCount):
+                    print("a whiff is a whiff.")
+                else:
+                    print("bang, bang, bang, cowboy.")
+                    self.bullets -= self.tripleAceCount
+
+            case gunfistsComboState.straight:
+                if (self.bullets < self.straightCount):
+                    print("whomp whomp.")
+                else:
+                    print("fwoosh.")
+                    self.bullets -= self.straightCount
+
+            case gunfistsComboState.straightFlush:
+                if (self.bullets < self.straightFlushCount):
+                    print("big heckling whomp.")
+                else:
+                    print("fwoosh, with a lotta damage.")
+                    self.bullets -= self.straightFlushCount
+
+

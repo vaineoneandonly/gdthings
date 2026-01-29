@@ -91,3 +91,64 @@ def whiplanceProcessState(state):
                 print("it's a rainy summer day in the summer of Rio Grande.")
 
             lanceEmpowered = False
+
+hue = "bjkhdsk"
+
+class whiplanceClass(inputType.baseWeaponClass):
+    def __init__(self):
+        self.comboState = whiplanceComboState.whipNeutral
+        self.transitionTable = whiplanceTransitionTable
+
+        self.whipEmpowered = False
+        self.lanceEmpowered = False
+
+    def showCurrentState(self):
+        super().showCurrentState()
+        if self.whipEmpowered and self.lanceEmpowered:
+            print("with both tools charged and ready for a big boom!")
+        elif self.whipEmpowered:
+            print("charged whip in hand.")
+        elif self.lanceEmpowered:
+            print("charged lance in hand.")
+        else:
+            print("with both tools uncharged. Tough luck.")
+
+    def processState(self, i):
+        super().processState(i)
+
+        match self.comboState:
+            case whiplanceComboState.empowerLance:
+                print("lance powered up and ready to go.")
+                self.lanceEmpowered = True
+
+            case whiplanceComboState.empowerWhip:
+                print("whip powered up and ready to go.")
+                self.whipEmpowered = True
+
+            case whiplanceComboState.backswing:
+                print("you toss your lance backwards, creating a wavy motion.")
+
+            case whiplanceComboState.constrict:
+                print("you squeeze the last bit of breath out of your enemy.")
+
+            case whiplanceComboState.whipCarousel:
+                if (self.whipEmpowered and self.lanceEmpowered):
+                    print("absolutely menacing double squandering with your whip.")
+                    self.lanceEmpowered = False
+                elif (self.whipEmpowered):
+                    print("wahooooooooooie. We're going on a field trip, Jex!")
+                else:
+                    print("Jex?")
+
+                self.whipEmpowered = False
+
+            case whiplanceComboState.lanceTornado:
+                if (self.whipEmpowered and self.lanceEmpowered):
+                    print("thruuuuuust like Katrina!")
+                    self.whipEmpowered = False
+                elif (self.lanceEmpowered):
+                    print("the storm approaches.")
+                else:
+                    print("it's a rainy summer day in the summer of Rio Grande.")
+
+                self.lanceEmpowered = False

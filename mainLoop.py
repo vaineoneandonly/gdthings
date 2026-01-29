@@ -1,6 +1,19 @@
 import inputType, gunfists, whiplance
 
-if __name__ == "__main__":
+def agnosticMain(): #Absolute trash, but some valuable lessons learned.
+    #myClass = inputType.myWeapon(int(input("type 0 for gunfists, and 1 for whiplance:")))
+    c = input("ddlkajslid: ")
+
+    exec("myTransitionTable = " + c + "." + c + "TransitionTable")
+    print(myTransitionTable)
+
+    #for classy in inputType.myWeapon:
+    #    print(classy)
+
+
+    #print(myClass)
+
+def currentMain(): #as non-generic as humanly possible. terrible, even.
     myClass = inputType.myWeapon.whiplance
     myInput = inputType.inputType.light
 
@@ -19,4 +32,23 @@ if __name__ == "__main__":
 
             whiplance.whiplanceProcessState(currentState)
 
-    
+def classifiedClassesMain():
+    myClassInput = int(input("0 for gunfists, 1 for whiplance: "))
+
+    match myClassInput:
+        case 0:
+            player = gunfists.gunfistsClass()
+        case 1:
+            player = whiplance.whiplanceClass()
+
+    while True:
+        player.showCurrentState()
+        player.showPossibleStates()
+        
+        i = inputType.inputType(int(input("0 for light, 1 for heavy, 2 for super: ")))
+
+        player.processState(i)
+
+if __name__ == "__main__":
+    #agnosticMain()
+    classifiedClassesMain()    
