@@ -70,25 +70,29 @@ class gunfistsClass(inputType.baseWeaponClass):
                     print("whomp whomp.")
                 else:
                     print("fwoosh.")
-                    self.bullets -= self.flush
+                    self.bullets -= self.flushCount
 
             case g2ComboState.deadMansHand:
                 if (self.bullets != 0):
                     print("nope!")
                 else:
                     print("it's high noon. What the hell are we doing with this state btw")
+                
+                self.bullets = 0
 
             case g2ComboState.lastManStanding:
                 if (self.bullets != 1):
                     print("there can only be one.")
                 else:
                     print("one shot to raelly hurt.")
+                
+                self.bullets = 0
 
             case g2ComboState.discharge:
                 if (self.bullets == 0):
                     print("no bullets left in your chamber, cowboy.")
                 else:
-                    print("bang!" * self.bullets, end = " ")
+                    print("bang! " * self.bullets, end = " ")
                     print()
 
                 self.bullets = 0
