@@ -5,7 +5,7 @@ def agnosticMain(): #Absolute trash, but some valuable lessons learned.
     c = input("ddlkajslid: ")
 
     exec("myTransitionTable = " + c + "." + c + "TransitionTable")
-    print(myTransitionTable)
+    #print(myTransitionTable)
 
     #for classy in inputType.myWeapon:
     #    print(classy)
