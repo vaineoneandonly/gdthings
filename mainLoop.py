@@ -1,4 +1,4 @@
-import inputType, gunfists, whiplance
+import inputType, gunfists, whiplance, gunfists2
 
 def agnosticMain(): #Absolute trash, but some valuable lessons learned.
     #myClass = inputType.myWeapon(int(input("type 0 for gunfists, and 1 for whiplance:")))
@@ -33,11 +33,12 @@ def firstMain(): #as non-generic as humanly possible. terrible, even.
             whiplance.whiplanceProcessState(currentState)
 
 def classifiedClassesMain():
-    myClassInput = int(input("0 for gunfists, 1 for whiplance: "))
+    myClassInput = int(input("0 for gunfists, 1 for whiplance, 2 for new gunfists: "))
 
     match myClassInput:
         case 0: player = gunfists.gunfistsClass()
         case 1: player = whiplance.whiplanceClass()
+        case 2: player = gunfists2.gunfistsClass()
 
     while True:
         print("------------")
